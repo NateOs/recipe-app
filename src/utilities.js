@@ -1,5 +1,11 @@
 console.log('utilities.js')
 
-export const add = (a, b) => a + b
+const add = (a, b) => a + b
 
-export const name = "Nathan"
+const name = "Nathan"
+
+const square  = (x) => x * x
+
+export {
+    add, name, square as default
+}
