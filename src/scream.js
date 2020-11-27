@@ -1,8 +1,3 @@
-const scream = (sentence) => {
-    return sentence.toUpperCase() + '!'
-}
+const scream = (text) => `${text.toUpperCase()}!`
 
-export {
-    scream as default
-}
-
+export { scream as default }
