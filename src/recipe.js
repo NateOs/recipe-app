@@ -1,10 +1,23 @@
+import uuidv4 from "uuid/v4" 
+
 class Recipe {
     constructor(title, steps, ingredients) {
         this.title = title
         this.steps = steps
         this.ingredients = ingredients
     } 
-    addRecipe() {
+    saveRecipe() {
+        let recipeItem = [{
+            'id': uuidv4(),
+            'title': this.title,
+            'steps':this.steps,
+            'ingredients': this.ingredients
+                            }]
+        localStorage.setItem('recipes', JSON.stringify(recipeItem))
+
+        return recipeItem
+    }
+    deleteRecipe() {
         // let Recipe = [{
         //     'title':this.title,
         //     'steps':this.steps,
