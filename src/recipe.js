@@ -1,39 +1,47 @@
-import uuidv4 from "uuid/v4" 
+// import uuidv4 from "uuid/v4" 
 
-class Recipe {
-    constructor(title, steps, ingredients) {
+class Recipe_ {
+    constructor(id, title, steps, ingredients) {
+        this.id = id
         this.title = title
         this.steps = steps
         this.ingredients = ingredients
+        this.savedItem = []
     } 
-    saveRecipe() {
-        let recipeItem = [{
-            'id': uuidv4(),
+    addRecipe() {
+        const recipeItem = [{
+            'id': this.id,
             'title': this.title,
             'steps':this.steps,
             'ingredients': this.ingredients
-                            }]
-        localStorage.setItem('recipes', JSON.stringify(recipeItem))
+            }]
+    
+        this.loadRecipe()
+        this.savedItem.push(...recipeItem)
+        this.saveRecipe()
 
         return recipeItem
     }
-    deleteRecipe() {
-        // let Recipe = [{
-        //     'title':this.title,
-        //     'steps':this.steps,
-        //     'ingredients': this.ingredients
-        // }]
-        // let recipeItem = [{
-        //     'title':'Banku',
-        //     'steps':'1. Mix Doughs, 2. Add salt and water to taste, 3. Stir on heat to cook thickness.',
-        //     'ingredients': [{'name': 'Cassava Dough',
-        //                     'have': false},
-        //                     {'name': 'Corn Dough',
-        //                     'have': true}]
-        //             }] //Example Array
+    saveRecipe() {
+        
+        localStorage.setItem('recipes', JSON.stringify(this.savedItem))
+        console.log(this.savedItem)
+        return ` saved`
+    }
+    loadRecipe() {
+        this.savedItem = JSON.parse(localStorage.getItem('recipes'))
+        console.log(this.savedItem)
+    }
+    deleteRecipe(id) {
+        this.loadRecipe()
+        const recipeIndex = this.savedItem.findIndex((recipe) => recipe.id === id)
 
-        return `I am a method`
+        if (recipeIndex > -1) {
+            this.savedItem.splice(recipeIndex, 1)
+            this.saveRecipe()
+        }
+        console.log(recipeIndex)
     }
 }
 
-export { Recipe as default }
+export { Recipe_ as default }
