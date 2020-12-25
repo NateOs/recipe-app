@@ -1,10 +1,19 @@
-import Recipe from "./recipe"
+// import Recipe_ from "./recipe"
+// import uuidv4 from "uuid/v4" 
 
-const newRecipe = new Recipe('Banku',
-                            '1. Mix Doughs, 2. Add salt and water to taste, 3. Stir on heat to cook thickness.',
-                            [{'name': 'Cassava Dough',
-                            'have': false},
-                            {'name': 'Corn Dough',
-                            'have': true}])
-const ret = (newRecipe.addRecipe())
-console.log(ret)
+// const theRecipe = new Recipe_()
+// console.log(theRecipe)
+
+// let loaded = theRecipe.loadRecipe()
+
+// console.log(loaded)
+
+// theRecipe.deleteRecipe('93725e56-26ed-47c2-a357-d522304f628b')
+
+// // theRecipe.addRecipe()
+
+
+
+
+
+

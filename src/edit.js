@@ -1,6 +1,7 @@
 import uuidv4 from "uuid/v4" 
 import Recipe_ from "./recipe"
 
+//all form entries are assigned on this object
 const dataObject  = {
     'id' : uuidv4(),
     'title' : '',
@@ -8,6 +9,7 @@ const dataObject  = {
     'ingredients' : []
 }
 
+//// Getting form entries
 document.querySelector('#edit-text__title').addEventListener('input',  (e) => {
 
     dataObject.title = e.target.value
@@ -28,7 +30,11 @@ document.querySelector('#add-ingredient').addEventListener('change', (e) => {
 
 document.querySelector('#submit').addEventListener('click', (e) => {
     e.preventDefault()
-    console.log(dataObject)
+
+    const {id, title, steps, ingredients} = dataObject
+
+    const theRecipe = new Recipe_(id, title, steps, ingredients)
+    theRecipe.addRecipe() //recipe
 })
 
 

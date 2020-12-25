@@ -6,7 +6,7 @@ class Recipe_ {
         this.title = title
         this.steps = steps
         this.ingredients = ingredients
-        this.savedItem = []
+        this.savedItem = this.loadRecipe()
     } 
     addRecipe() {
         const recipeItem = [{
@@ -16,8 +16,8 @@ class Recipe_ {
             'ingredients': this.ingredients
             }]
     
-        this.loadRecipe()
-        this.savedItem.push(...recipeItem)
+        this.loadRecipe() //get from storage
+        this.savedItem.push(...recipeItem) //
         this.saveRecipe()
 
         return recipeItem
@@ -25,22 +25,26 @@ class Recipe_ {
     saveRecipe() {
         
         localStorage.setItem('recipes', JSON.stringify(this.savedItem))
-        console.log(this.savedItem)
-        return ` saved`
+
+        return `Item saved`
     }
     loadRecipe() {
-        this.savedItem = JSON.parse(localStorage.getItem('recipes'))
-        console.log(this.savedItem)
+        const recipeJSON = localStorage.getItem('recipes')
+
+        try {
+            return recipeJSON ? JSON.parse(recipeJSON) : []
+        } catch (e) {
+            return []
+        } 
     }
     deleteRecipe(id) {
-        this.loadRecipe()
-        const recipeIndex = this.savedItem.findIndex((recipe) => recipe.id === id)
+        const savedRecipes = this.loadRecipe()
+        const recipeIndex = savedRecipes.findIndex((recipe) => recipe.id === id)
 
         if (recipeIndex > -1) {
-            this.savedItem.splice(recipeIndex, 1)
+            this.savedItem = savedRecipes.splice(recipeIndex, 1)
             this.saveRecipe()
         }
-        console.log(recipeIndex)
     }
 }
 
