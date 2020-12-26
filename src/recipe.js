@@ -1,13 +1,12 @@
-// import uuidv4 from "uuid/v4" 
-
-class Recipe_ {
+class Recipe_ { //class definition
     constructor(id, title, steps, ingredients) {
         this.id = id
         this.title = title
         this.steps = steps
         this.ingredients = ingredients
         this.savedItem = this.loadRecipe()
-    } 
+    }
+    //add a new recipe and save
     addRecipe() {
         const recipeItem = [{
             'id': this.id,
@@ -22,12 +21,23 @@ class Recipe_ {
 
         return recipeItem
     }
+     //Allows to add new ingredient through button
+    addIngredient(id, ingredient) {
+        const recipes = this.savedItem
+
+        const recipe = recipes.find((recipe) => recipe.id === id)
+    
+        recipe.ingredients.push(ingredient)
+        this.saveRecipe()
+   
+    }
+    //saveRecipe to localstorage
     saveRecipe() {
         
         localStorage.setItem('recipes', JSON.stringify(this.savedItem))
-
         return `Item saved`
     }
+    //get recipe from localstorage
     loadRecipe() {
         const recipeJSON = localStorage.getItem('recipes')
 
@@ -37,6 +47,7 @@ class Recipe_ {
             return []
         } 
     }
+    //delete a recipe
     deleteRecipe(id) {
         const savedRecipes = this.loadRecipe()
         const recipeIndex = savedRecipes.findIndex((recipe) => recipe.id === id)
@@ -45,6 +56,10 @@ class Recipe_ {
             this.savedItem = savedRecipes.splice(recipeIndex, 1)
             this.saveRecipe()
         }
+    }
+    //make recipe object available
+    exposeRecipes () {
+        return this.savedItem
     }
 }
 
