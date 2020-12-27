@@ -28,6 +28,21 @@ document.querySelector('#add-ingredient').addEventListener('change', (e) => {
     })
 })
 
+ // adding to ingredient list
+document.querySelector('#add-ingredientBtn').addEventListener('click', (e) => {
+    e.preventDefault()
+
+    const ingredientVal = document.querySelector('#add-ingredient').value //getting form val
+
+    //Adding additional ingredient through button
+    const xRecipes = new Recipe_()
+
+    if (xRecipes.savedItem !== null) {
+        this.addIngredient(id, ingredientVal) //id shd be received from hashstring
+        console.log(xRecipes.savedItem)
+    }
+})
+
 document.querySelector('#submit').addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -36,18 +51,3 @@ document.querySelector('#submit').addEventListener('click', (e) => {
     const theRecipe = new Recipe_(id, title, steps, ingredients)
     theRecipe.addRecipe() //recipe
 })
-
-
-
-
-
-
-// console.log(getInput)
-
-// let addRecipe = theRecipe.saveRecipe()
-// addRecipe()
-// console.log(loaded)
-
-// theRecipe.deleteRecipe('93725e56-26ed-47c2-a357-d522304f628b')
-
-// theRecipe.addRecipe()
