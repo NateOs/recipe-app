@@ -29,25 +29,34 @@ document.querySelector('#add-ingredient').addEventListener('change', (e) => {
 })
 
  // adding to ingredient list
-document.querySelector('#add-ingredientBtn').addEventListener('click', (e) => {
-    e.preventDefault()
+// document.querySelector('#add-ingredientBtn').addEventListener('click', (e) => {
+//     e.preventDefault()
 
-    const ingredientVal = document.querySelector('#add-ingredient').value //getting form val
+//     const ingredientVal = document.querySelector('#add-ingredient').value //getting form val
 
-    //Adding additional ingredient through button
-    const xRecipes = new Recipe_()
+//     //Adding additional ingredient through button
+//     const xRecipes = new Recipe_()
 
-    if (xRecipes.savedItem !== null) {
-        this.addIngredient(id, ingredientVal) //id shd be received from hashstring
-        console.log(xRecipes.savedItem)
-    }
-})
+//     if (xRecipes.savedItem !== null) {
+//         this.addIngredient(id, ingredientVal) //id shd be received from hashstring
+//         console.log(xRecipes.savedItem)
+//     }
+// })
 
-document.querySelector('#submit').addEventListener('click', (e) => {
+// submitting a recipe
+document.querySelector('#submitBtn').addEventListener('click', (e) => {
     e.preventDefault()
 
     const {id, title, steps, ingredients} = dataObject
-
-    const theRecipe = new Recipe_(id, title, steps, ingredients)
-    theRecipe.addRecipe() //recipe
+    if (title && steps !== '') {
+        const theRecipe = new Recipe_(id, title, steps, ingredients)
+        theRecipe.addRecipe() //recipe
+    }
+    
 })
+
+// //deleting a recipe
+// document.querySelector('#deleteBtn').addEventListener('click', (e) => {
+//     e.preventDefault()
+//     console.log('test')
+// })
