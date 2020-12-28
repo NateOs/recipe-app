@@ -1,3 +1,5 @@
+import uuidv4 from "uuid/v4"
+
 class Recipe_ { //class definition
     constructor(id, title, steps, ingredients) {
         this.id = id
@@ -9,15 +11,14 @@ class Recipe_ { //class definition
     //add a new recipe and save
     addRecipe() {
         const recipeItem = {
-            'id': this.id,
+            'id': uuidv4(),
             'title': this.title,
             'steps':this.steps,
             'ingredients': this.ingredients
             }
         
-            if (typeof recipeItem.id === undefined) {
-                return `Empty ID`
-            } else {
+            if (typeof recipeItem.title === 'string') {
+                
                 this.loadRecipe() //get from storage
                 this.savedItem.push(recipeItem) //
                 this.saveRecipe()
