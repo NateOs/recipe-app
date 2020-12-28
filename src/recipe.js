@@ -8,18 +8,21 @@ class Recipe_ { //class definition
     }
     //add a new recipe and save
     addRecipe() {
-        const recipeItem = [{
+        const recipeItem = {
             'id': this.id,
             'title': this.title,
             'steps':this.steps,
             'ingredients': this.ingredients
-            }]
-    
-        this.loadRecipe() //get from storage
-        this.savedItem.push(...recipeItem) //
-        this.saveRecipe()
-
-        return recipeItem
+            }
+        
+            if (typeof recipeItem.id === undefined) {
+                return `Empty ID`
+            } else {
+                this.loadRecipe() //get from storage
+                this.savedItem.push(recipeItem) //
+                this.saveRecipe()
+            }
+            return recipeItem.id
     }
      //Allows to add new ingredient through button
     addIngredient(id, ingredient) {
