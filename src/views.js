@@ -6,7 +6,7 @@ const recipes = xRecipes.exposeRecipes()
 
 console.log(recipes)
 
-
+//TODO GenerateRecipeDom
 // //Generate RecipeDOM
 // const generateRecipeDOM = (recipes) => {
 //     const containerElement = document.createElement('div')
@@ -19,8 +19,10 @@ console.log(recipes)
 
 // }
 
-//Generate ingredients summaryDOM
+//todo Generate ingredients summaryDOM
 
-//Generate ingredientsDDOM
+//todo Generate ingredientsDDOM
 
-//Generate RecipeTextDOM
+//todo Generate RecipeTextDOM
+
+//todo Render()

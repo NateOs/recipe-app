@@ -16,8 +16,7 @@ document.querySelector('#add-newBtn').addEventListener('click', (e) => {
     location.assign(`/edit.html#${id}`)
 })
 
-//
-//use id to update item
+
 
  //* info
     //! warning

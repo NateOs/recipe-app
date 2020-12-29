@@ -1,6 +1,6 @@
 import Recipe_ from "./recipe"
 
-//all form entries are assigned on this object
+//*all form entries are assigned on this object
 const dataObject  = {
     'id': null,
     'title': '',
@@ -27,7 +27,8 @@ document.querySelector('#add-ingredient').addEventListener('change', (e) => {
     })
 })
 
- // adding to ingredient list
+ //* adding to ingredient list
+ // TODO
 // document.querySelector('#add-ingredientBtn').addEventListener('click', (e) => {
 //     e.preventDefault()
 
@@ -42,7 +43,7 @@ document.querySelector('#add-ingredient').addEventListener('change', (e) => {
 //     }
 // })
 
-// submitting a recipe
+//* submitting a recipe
 document.querySelector('#submitBtn').addEventListener('click', (e) => {
     e.preventDefault()
 

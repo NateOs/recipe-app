@@ -1,6 +1,7 @@
 import uuidv4 from "uuid/v4"
 
-class Recipe_ { //class definition
+class Recipe_ { 
+    //*class definition
     constructor(id, title, steps, ingredients) {
         this.id = id
         this.title = title
@@ -8,7 +9,7 @@ class Recipe_ { //class definition
         this.ingredients = ingredients
         this.savedItem = this.loadRecipe()
     }
-    //add a new recipe and save
+    //*add a new recipe and save
     addRecipe() {
         const recipeItem = {
             'id': uuidv4(),
@@ -26,11 +27,11 @@ class Recipe_ { //class definition
             // }
             return recipeItem.id
     }
-    //updates the recipe without creation of new uuid
+    //*updates the recipe without creation of new uuid
     updateRecipe(id) {
-        
+        // TODO Finish function
     }
-     //Allows to add new ingredient through button
+     //*Allows to add new ingredient through button
     addIngredient(id, ingredient) {
         const recipes = this.savedItem
 
@@ -40,13 +41,13 @@ class Recipe_ { //class definition
         this.saveRecipe()
    
     }
-    //saveRecipe to localstorage
+    //*saveRecipe to localstorage
     saveRecipe() {
         
         localStorage.setItem('recipes', JSON.stringify(this.savedItem))
         return `Item saved`
     }
-    //get recipe from localstorage
+    //*get recipe from localstorage
     loadRecipe() {
         const recipeJSON = localStorage.getItem('recipes')
 
@@ -56,7 +57,7 @@ class Recipe_ { //class definition
             return []
         } 
     }
-    //delete a recipe
+    //*delete a recipe
    
     deleteRecipe(id) {
         const savedRecipes = this.loadRecipe()
@@ -67,7 +68,7 @@ class Recipe_ { //class definition
             this.saveRecipe()
         }
     }
-    //make recipe object available
+    //*make recipe object available
     exposeRecipes () {
         return this.savedItem
     }
