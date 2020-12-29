@@ -17,13 +17,18 @@ class Recipe_ { //class definition
             'ingredients': this.ingredients
             }
         
-            if (typeof recipeItem.title === 'string') {
+            // todo Test this again!
+            // if (typeof recipeItem.title === 'string') {
                 
                 this.loadRecipe() //get from storage
                 this.savedItem.push(recipeItem) //
                 this.saveRecipe()
-            }
+            // }
             return recipeItem.id
+    }
+    //updates the recipe without creation of new uuid
+    updateRecipe(id) {
+        
     }
      //Allows to add new ingredient through button
     addIngredient(id, ingredient) {
@@ -52,6 +57,7 @@ class Recipe_ { //class definition
         } 
     }
     //delete a recipe
+   
     deleteRecipe(id) {
         const savedRecipes = this.loadRecipe()
         const recipeIndex = savedRecipes.findIndex((recipe) => recipe.id === id)

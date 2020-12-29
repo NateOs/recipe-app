@@ -2,12 +2,23 @@
 
 <html>
     <head>
-        <title>Recipe App</title>
+        <!-- <title>Recipe App</title> -->
     </head>
     <body>
-        <h1>Recipe App</h1>
-        <a href="edit.html">Edit Pge</a>
+        <a href="edit.html">Edit Page</a>
 
+        <div class="container">
+            <div class="container_items">
+                <header class="nav-search">
+                    <h1 class="title">Recipe App</h1>
+                    <input id="searchItem" type="text" class="search-box" placeholder="Search">
+                </header>
+                <div id ="recipes" class="recipes">
+                    <!--RecipeDOM will be rendered here-->
+                </div>
+                <button id="add-newBtn">Add Recipe</button>
+            </div>
+        </div>
 
         <script src="/scripts/index-bundle.js"></script>
     </body>

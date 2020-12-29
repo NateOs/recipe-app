@@ -1,12 +1,11 @@
-import uuidv4 from "uuid/v4" 
 import Recipe_ from "./recipe"
 
 //all form entries are assigned on this object
 const dataObject  = {
-    'id' : uuidv4(),
-    'title' : '',
-    'steps' : '',
-    'ingredients' : []
+    'id': null,
+    'title': '',
+    'steps': '',
+    'ingredients': []
 }
 
 //// Getting form entries
@@ -59,4 +58,4 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
 // document.querySelector('#deleteBtn').addEventListener('click', (e) => {
 //     e.preventDefault()
 //     console.log('test')
-// })
+// })  ////Do this after hashtring fix

@@ -10,5 +10,4 @@ const setFilters = (updates) => {
     }
 }
 
-
 export { setFilters, getFilters }

@@ -6,11 +6,19 @@
     </head>
     <body>
         <h1>Edit Recipe</h1>
+
+        <a href="./index.html">Home</a>
+
         <form id="edit-text" action="">
-            <input type="text" id="edit-text__title" placeholder="Enter Title">
-            <input type="text" id="edit-text__steps" placeholder="Enter steps">
-            <input type="text" id="add-ingredient" placeholder="Add ingredient">
-            <button id="submit">Save</button>
+            <input type="text" id="edit-text__title" placeholder="Enter Title" required>
+            <input type="text" id="edit-text__steps" placeholder="Enter steps" required>
+            <input type="text" id="add-ingredient" placeholder="Add one ingredient" required>
+
+            <button id="add-ingredientBtn">Add ingredient</button>
+
+            <button id="submitBtn">Save</button>
+
+            <button id="#deleteBtn">Delete</button>
 
         </form>
         <script src="/scripts/edit-bundle.js"></script>
