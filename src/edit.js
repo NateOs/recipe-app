@@ -8,7 +8,7 @@ const dataObject  = {
     'ingredients': []
 }
 
-//*Getting form entries
+//// Getting form entries
 document.querySelector('#edit-text__title').addEventListener('input',  (e) => {
 
     dataObject.title = e.target.value
@@ -28,7 +28,7 @@ document.querySelector('#add-ingredient').addEventListener('change', (e) => {
 })
 
  //* adding to ingredient list
- // TODO Test and implement or refactor this
+ // TODO
 // document.querySelector('#add-ingredientBtn').addEventListener('click', (e) => {
 //     e.preventDefault()
 
@@ -55,21 +55,8 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
     
 })
 
-//* updating recipe
-const recipeInstance = new Recipe_()
-const recipes = recipeInstance.loadRecipe()
-
-recipeInstance.updateRecipe(id)
-
-//* deleting a recipe
-
-const id  = location.hash.substring(1)
-
-document.querySelector('#deleteBtn').addEventListener('click', (e) => {
-    e.preventDefault()
-
-    // todo Test this after rendering to DOM
-    const recipeInstance = new Recipe_()
-    recipeInstance.deleteRecipe(id)
-    
-})  
+// //deleting a recipe
+// document.querySelector('#deleteBtn').addEventListener('click', (e) => {
+//     e.preventDefault()
+//     console.log('test')
+// })  ////Do this after hashtring fix
