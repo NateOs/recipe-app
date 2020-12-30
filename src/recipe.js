@@ -28,9 +28,22 @@ class Recipe_ {
             return recipeItem.id
     }
     //*updates the recipe without creation of new uuid
-    updateRecipe(id) {
+    updateRecipe(id, updates) {
         // TODO Finish function
+
+        //* Below idea works but saves in addition to existing file
+        const recipes = this.loadRecipe()
+
+        const recipe = recipes.find( recipe => recipe.id === id );
+        console.log(recipe)
+
+        recipe.title = 'Banku and Okro'
+        recipe.steps = 'Add one, stir, add two , stir'
+        
+        this.savedItem.push(recipe)
+        this.saveRecipe()
     }
+
      //*Allows to add new ingredient through button
     addIngredient(id, ingredient) {
         const recipes = this.savedItem
