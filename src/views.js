@@ -7,17 +7,25 @@ const recipes = xRecipes.exposeRecipes()
 console.log(recipes)
 
 //TODO GenerateRecipeDom
-// //Generate RecipeDOM
-// const generateRecipeDOM = (recipes) => {
-//     const containerElement = document.createElement('div')
-//     const recipeElement = document.createElement('a')
-//     const checkbox = document.createElement('checkbox')
-//     const delButton = document.createElement('button')
-//     const recipeText = docment.createElement('h2')
+
+const generateRecipeDOM = () => {
+    const recipeEle = document.createElement('a')
+    const textEle = document.createElement('p')
+    const statusEle = document.createElement('p')
+
+    const recipePlace = document.querySelector('#recipes')
+
+    textEle.textContent = 'Kokonte with beef soup'
+    statusEle.textContent = 'You have no ingredient available'
+
+    recipeEle.appendChild(textEle)
+    recipeEle.appendChild(statusEle)
+
+    recipePlace.appendChild(recipeEle)
+
+}
 
 
-
-// }
 
 //todo Generate ingredients summaryDOM
 
@@ -26,3 +34,5 @@ console.log(recipes)
 //todo Generate RecipeTextDOM
 
 //todo Render()
+
+export { generateRecipeDOM }
