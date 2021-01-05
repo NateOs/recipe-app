@@ -2,29 +2,37 @@ import Recipe_ from "./recipe"
 import { getFilters } from "./filters"
 
 const xRecipes = new Recipe_()
-const recipes = xRecipes.exposeRecipes()
 
-console.log(recipes)
+
+
 
 //TODO GenerateRecipeDom
 
 const generateRecipeDOM = () => {
     const recipeEle = document.createElement('a')
-    const textEle = document.createElement('p')
+    const titleEle = document.createElement('p')
     const statusEle = document.createElement('p')
 
-    const recipePlace = document.querySelector('#recipes')
+    const recipes = xRecipes.exposeRecipes()
 
-    textEle.textContent = 'Kokonte with beef soup'
-    statusEle.textContent = 'You have no ingredient available'
+    for (let recipe of recipes) {
+        console.log(recipe)
 
-    recipeEle.appendChild(textEle)
-    recipeEle.appendChild(statusEle)
+        let title = recipe.title
+        console.log(title)
 
-    recipePlace.appendChild(recipeEle)
+        let ingredients = recipe.ingredients
+        console.log(ingredients)
+        
+        console.log(Object.values(ingredients).reduce((a, item) => a + item, 0))
+
+
+        
+    }
+    
+
 
 }
-
 
 
 //todo Generate ingredients summaryDOM
