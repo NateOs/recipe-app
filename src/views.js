@@ -19,13 +19,7 @@ const generateRecipeDOM = () => {
         console.log(recipe)
 
         let title = recipe.title
-        console.log(title)
-
-        let ingredients = recipe.ingredients
-        console.log(ingredients)
-        
-        console.log(Object.values(ingredients).reduce((a, item) => a + item, 0))
-
+        let ingredients = recipe.ingredients // todo just use array length to tell user number ingredients in there
 
         
     }

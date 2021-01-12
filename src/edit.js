@@ -8,7 +8,6 @@ const dataObject  = {
     'ingredients': []
 }
 
-//// Getting form entries
 document.querySelector('#edit-text__title').addEventListener('input',  (e) => {
 
     dataObject.title = e.target.value

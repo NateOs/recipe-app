@@ -1,7 +1,7 @@
 import Recipe_ from "./recipe"
 import { exposeRecipes } from "./views"
 import { setFilters } from "./filters"
-
+import { generateRecipeDOM } from "./views"
 
 const theRecipe = new Recipe_()
 
@@ -16,9 +16,8 @@ document.querySelector('#add-newBtn').addEventListener('click', (e) => {
     location.assign(`/edit.html#${id}`)
 })
 
+generateRecipeDOM()
 
 
- //* info
-    //! warning
     // TODO get items id
     // TODO use id to update item

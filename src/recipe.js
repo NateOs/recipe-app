@@ -19,12 +19,12 @@ class Recipe_ {
             }
         
             // todo Test this again!
-            // if (typeof recipeItem.title === 'string') {
+            if (typeof recipeItem.title === 'string') {
                 
                 this.loadRecipe() //get from storage
                 this.savedItem.push(recipeItem) //
                 this.saveRecipe()
-            // }
+            }
             return recipeItem.id
     }
     //*updates the recipe without creation of new uuid
@@ -58,7 +58,6 @@ class Recipe_ {
         } 
     }
     //*delete a recipe
-   
     deleteRecipe(id) {
         const savedRecipes = this.loadRecipe()
         const recipeIndex = savedRecipes.findIndex((recipe) => recipe.id === id)
