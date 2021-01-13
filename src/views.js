@@ -12,8 +12,6 @@ const generateRecipeDOM = (recipe) => {
     const titleEle = document.createElement('p')
     const statusEle = document.createElement('p')
 
-    console.log(recipes.ingredients.length)
-
     //* setup recipeTitle text
     if (recipe.title.length > 0) {
         titleEle.textContent = recipe.title
@@ -21,9 +19,11 @@ const generateRecipeDOM = (recipe) => {
         titleEle.textContent = 'Unnamed Recipe'
     }
 
+    console.log(recipe.ingredients.length)
+
     if (recipe.ingredients.length > 0) {
         const ingredients = recipe.ingredients
-        statusEle.textContent = `You have ${ingredients.length()} ingredients`
+        statusEle.textContent = `You have ${ingredients.length} ingredients`
     } else {
         statusEle.textContent = `You have no ingredients`
     }
@@ -55,7 +55,7 @@ const renderRecipes = () => {
     if (filteredRecipes.length > 0) {
         filteredRecipes.forEach( recipe => {
             const recipeEl = generateRecipeDOM(recipe)
-            recipesEl.appendChild(recipesEl)
+            recipesEl.appendChild(recipeEl)
         })
     } else {
         const emptyMessage = document.createElement('p')
