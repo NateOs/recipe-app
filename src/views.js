@@ -33,15 +33,6 @@ const generateRecipeDOM = (recipe) => {
     return recipeEle
 }
 
-
-//todo Generate ingredients summaryDOM
-
-//todo Generate ingredientsDOM
-
-//todo Generate RecipeTextDOM
-
-//todo Render()
-
 const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
     const recipes = xRecipes.exposeRecipes()
@@ -65,4 +56,22 @@ const renderRecipes = () => {
 }
 
 
-export { generateRecipeDOM, renderRecipes }
+
+//todo Generate ingredients summaryDOM
+const summaryDOM = () => {
+    const recipes = xRecipes.exposeRecipes()
+    const summary = document.createElement('p')
+    const recipesEl = document.querySelector('#recipes')
+    const recipesLength = recipes.length
+
+    if (recipes.length > 0) {
+        summary.textContent = `You have ${recipesLength} recipes.`
+    } else {
+        summary.textContent = `You have no recipes`
+    }
+    
+    recipesEl.append(summary)
+}
+
+
+export { generateRecipeDOM, renderRecipes, summaryDOM }
