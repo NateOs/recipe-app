@@ -62,9 +62,14 @@ class Recipe_ {
         const savedRecipes = this.loadRecipe()
         const recipeIndex = savedRecipes.findIndex((recipe) => recipe.id === id)
 
+        console.log(recipeIndex)
         if (recipeIndex > -1) {
-            this.savedItem = savedRecipes.splice(recipeIndex, 1)
+            const recipes = this.savedItem
+
+            recipes.splice(recipeIndex, 1)
+            this.savedItem = recipes
             this.saveRecipe()
+        location.assign('/index.html')
         }
     }
     //*make recipe object available

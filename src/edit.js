@@ -54,8 +54,11 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
     
 })
 
-// //deleting a recipe
-// document.querySelector('#deleteBtn').addEventListener('click', (e) => {
-//     e.preventDefault()
-//     console.log('test')
-// })  ////Do this after hashtring fix
+//* delete note
+document.querySelector('#deleteBtn').addEventListener('click', (e) => {
+    const id = location.hash.substring(1)
+    const theRecipe = new Recipe_()
+    theRecipe.deleteRecipe(id)
+    location.assign('/index.html')
+})
+

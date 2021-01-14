@@ -5,7 +5,7 @@ const filters = getFilters()
 const xRecipes = new Recipe_()
 
 
-//*GenerateRecipeDom
+//* GenerateRecipeDom
 //todo add a attributes
 const generateRecipeDOM = (recipe) => {
 
@@ -37,6 +37,8 @@ const generateRecipeDOM = (recipe) => {
     
     recipeEle.appendChild(titleEle)
     recipeEle.appendChild(statusEle)
+
+    recipeEle.setAttribute('href', `/edit.html#${recipe.id}`)
     recipeEle.classList.add('list-item')
 
     return recipeEle
@@ -84,5 +86,12 @@ const summaryDOM = () => {
     recipesEl.append(summary)
 }
 
+
+//* generate ingredientsDOM
+
+
+//* render ingredientDOm
+
+//* initialize editPage
 
 export { generateRecipeDOM, renderRecipes, summaryDOM }
