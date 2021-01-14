@@ -1,3 +1,4 @@
+'use strict'
 import Recipe_ from "./recipe"
 
 //*all form entries are assigned on this object
@@ -49,12 +50,12 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
     const {id, title, steps, ingredients} = dataObject
     if (title && steps !== '') {
         const theRecipe = new Recipe_(id, title, steps, ingredients)
-        theRecipe.addRecipe() //recipe
+        theRecipe.addRecipe() 
     }
     
 })
 
-//* delete note
+//* delete recipe
 document.querySelector('#deleteBtn').addEventListener('click', (e) => {
     const id = location.hash.substring(1)
     const theRecipe = new Recipe_()

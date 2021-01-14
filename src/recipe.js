@@ -1,3 +1,5 @@
+'use strict'
+
 import uuidv4 from "uuid/v4"
 
 class Recipe_ { 
@@ -30,6 +32,10 @@ class Recipe_ {
     //*updates the recipe without creation of new uuid
     updateRecipe(id) {
         // TODO Finish function
+        const savedRecipes = this.loadRecipe()
+
+        const recipeIndex = savedRecipes.find( recipe => recipe.id === id)
+        console.log(recipeIndex)
     }
      //*Allows to add new ingredient through button
     addIngredient(id, ingredient) {
@@ -61,15 +67,13 @@ class Recipe_ {
     deleteRecipe(id) {
         const savedRecipes = this.loadRecipe()
         const recipeIndex = savedRecipes.findIndex((recipe) => recipe.id === id)
-
-        console.log(recipeIndex)
         if (recipeIndex > -1) {
             const recipes = this.savedItem
 
             recipes.splice(recipeIndex, 1)
             this.savedItem = recipes
             this.saveRecipe()
-        location.assign('/index.html')
+        window.location.assign('index.html')
         }
     }
     //*make recipe object available

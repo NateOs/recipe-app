@@ -1,3 +1,5 @@
+'use strict'
+
 import Recipe_ from "./recipe"
 import { renderRecipes, summaryDOM } from "./views"
 import { setFilters } from "./filters"

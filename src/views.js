@@ -1,3 +1,4 @@
+'use strict'
 import Recipe_ from "./recipe"
 import { getFilters } from "./filters"
 
@@ -93,5 +94,9 @@ const summaryDOM = () => {
 //* render ingredientDOm
 
 //* initialize editPage
+
+const initializeEditPage = () => {
+    const recipes = xRecipes.exposeRecipes()
+}
 
 export { generateRecipeDOM, renderRecipes, summaryDOM }
