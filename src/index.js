@@ -1,5 +1,5 @@
 import Recipe_ from "./recipe"
-import { renderRecipes } from "./views"
+import { renderRecipes, summaryDOM } from "./views"
 import { setFilters } from "./filters"
 
 
@@ -17,9 +17,8 @@ document.querySelector('#add-newBtn').addEventListener('click', (e) => {
 })
 
 renderRecipes()
+summaryDOM()
 
-// generateRecipeDOM()
 
-
-    // TODO get items iddd 
+    // TODO get items id 
     // TODO use id to update item

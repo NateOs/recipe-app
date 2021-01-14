@@ -1,11 +1,12 @@
 import Recipe_ from "./recipe"
-import { getFilters, setFilters } from "./filters"
+import { getFilters } from "./filters"
 
 const filters = getFilters()
 const xRecipes = new Recipe_()
 
-//TODO GenerateRecipeDom
 
+//*GenerateRecipeDom
+//todo add a attributes
 const generateRecipeDOM = (recipe) => {
 
     const recipeEle = document.createElement('a')
@@ -19,6 +20,9 @@ const generateRecipeDOM = (recipe) => {
         titleEle.textContent = 'Unnamed Recipe'
     }
 
+    titleEle.classList.add('list-item__title')
+    titleEle.setAttribute('href', `/edit.html#${recipe.id}`)
+
     console.log(recipe.ingredients.length)
 
     if (recipe.ingredients.length > 0) {
@@ -27,12 +31,18 @@ const generateRecipeDOM = (recipe) => {
     } else {
         statusEle.textContent = `You have no ingredients`
     }
-        recipeEle.appendChild(titleEle)
-        recipeEle.appendChild(statusEle)
+
+    statusEle.setAttribute('href', `/edit.html#${recipe.id}`)
+    statusEle.classList.add('list-item__subtitle')
+    
+    recipeEle.appendChild(titleEle)
+    recipeEle.appendChild(statusEle)
+    recipeEle.classList.add('list-item')
 
     return recipeEle
 }
 
+//* render all recipes
 const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
     const recipes = xRecipes.exposeRecipes()
@@ -42,6 +52,7 @@ const renderRecipes = () => {
     console.log(recipes)
 
     recipesEl.innerHTML = ''
+//! filterSearch isnt working!!!
 
     if (filteredRecipes.length > 0) {
         filteredRecipes.forEach( recipe => {
@@ -57,7 +68,7 @@ const renderRecipes = () => {
 
 
 
-//todo Generate ingredients summaryDOM
+//* recipe summaryDOM
 const summaryDOM = () => {
     const recipes = xRecipes.exposeRecipes()
     const summary = document.createElement('p')
