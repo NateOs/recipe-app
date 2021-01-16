@@ -1,5 +1,6 @@
 'use strict'
 import Recipe_ from "./recipe"
+import { initializeEditPage } from "./views"
 
 //*all form entries are assigned on this object
 const dataObject  = {
@@ -9,17 +10,17 @@ const dataObject  = {
     'ingredients': []
 }
 
-document.querySelector('#edit-text__title').addEventListener('input',  (e) => {
+document.querySelector('#edit-title').addEventListener('input',  (e) => {
 
     dataObject.title = e.target.value
 })
 
-document.querySelector('#edit-text__steps').addEventListener('input',  (e) => {
+document.querySelector('#edit-steps').addEventListener('input',  (e) => {
     
     dataObject.steps = e.target.value
 })
 
-document.querySelector('#add-ingredient').addEventListener('change', (e) => {
+document.querySelector('#edit-ingredient').addEventListener('change', (e) => {
 
     dataObject.ingredients.push({
        'item' : e.target.value,
@@ -55,11 +56,18 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
     
 })
 
+//TODO Redirect to Homepage after note is deleted
 //* delete recipe
-document.querySelector('#deleteBtn').addEventListener('click', (e) => {
+document.querySelector('#deleteBtn').addEventListener('click', () => {
     const id = location.hash.substring(1)
     const theRecipe = new Recipe_()
     theRecipe.deleteRecipe(id)
-    location.assign('/index.html')
+    // location.assign('/index.html')
+    window.open('/index.html')
 })
+
+initializeEditPage()
+
+
+
 
