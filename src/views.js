@@ -1,4 +1,5 @@
 'use strict'
+
 import Recipe_ from "./recipe"
 import { getFilters } from "./filters"
 
@@ -52,6 +53,7 @@ const renderRecipes = () => {
     const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
     console.table(filteredRecipes)
+    console.log(filteredRecipes)
     console.log(recipes)
 
     recipesEl.innerHTML = ''
@@ -95,8 +97,20 @@ const summaryDOM = () => {
 
 //* initialize editPage
 
-const initializeEditPage = () => {
+const initializeEditPage = (recipeId) => {
     const recipes = xRecipes.exposeRecipes()
+
+    const titleEle = document.querySelector('#edit-title')
+    const stepsEle = document.querySelector('#edit-steps')
+
+    const ingredientsEle = document.createElement('div')
+    
+    const recipeItem = recipes.find( recipe => recipe.id === recipeId)
+    console.log(recipeItem)
+
+    titleEle.value = recipeItem.title
+    stepsEle.value = recipeItem.steps
 }
 
-export { generateRecipeDOM, renderRecipes, summaryDOM }
+
+export { generateRecipeDOM, renderRecipes, summaryDOM, initializeEditPage }

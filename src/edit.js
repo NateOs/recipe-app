@@ -2,6 +2,9 @@
 import Recipe_ from "./recipe"
 import { initializeEditPage } from "./views"
 
+const recipeId = location.hash.substring(1)
+console.log(recipeId)
+
 //*all form entries are assigned on this object
 const dataObject  = {
     'id': null,
@@ -66,7 +69,7 @@ document.querySelector('#deleteBtn').addEventListener('click', () => {
     window.open('/index.html')
 })
 
-initializeEditPage()
+initializeEditPage(recipeId)
 
 
 
