@@ -1,9 +1,9 @@
 'use strict'
 import Recipe_ from "./recipe"
+import uuidv4 from "uuid/v4"
 import { initializeEditPage } from "./views"
 
 const recipeId = location.hash.substring(1)
-console.log(recipeId)
 
 //*all form entries are assigned on this object
 const dataObject  = {
@@ -26,8 +26,9 @@ document.querySelector('#edit-steps').addEventListener('input',  (e) => {
 document.querySelector('#edit-ingredient').addEventListener('change', (e) => {
 
     dataObject.ingredients.push({
-       'item' : e.target.value,
-       'avail' : false
+        'id' : uuidv4(),
+        'item' : e.target.value,
+        'avail' : false
     })
 })
 
@@ -38,7 +39,7 @@ document.querySelector('#edit-ingredient').addEventListener('change', (e) => {
 
 //     const ingredientVal = document.querySelector('#add-ingredient').value //getting form val
 
-//     //Adding additional ingredient through button
+    //Adding additional ingredient through button
 //     const xRecipes = new Recipe_()
 
 //     if (xRecipes.savedItem !== null) {
