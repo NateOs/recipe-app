@@ -6,6 +6,9 @@ import { getFilters } from "./filters"
 const filters = getFilters()
 const xRecipes = new Recipe_()
 
+const recipes = xRecipes.exposeRecipes() //accessing all recipe values
+
+// const testItems = xRecipes.toggleIngredient('0d755e92-8a8e-4b2f-a13f-97277e73234b')
 
 //* GenerateRecipeDom
 //todo add a attributes
@@ -24,8 +27,6 @@ const generateRecipeDOM = (recipe) => {
 
     titleEle.classList.add('list-item__title')
     titleEle.setAttribute('href', `/edit.html#${recipe.id}`)
-
-    console.log(recipe.ingredients.length)
 
     if (recipe.ingredients.length > 0) {
         const ingredients = recipe.ingredients
@@ -51,10 +52,6 @@ const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
     const recipes = xRecipes.exposeRecipes()
     const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
-
-    console.table(filteredRecipes)
-    console.log(filteredRecipes)
-    console.log(recipes)
 
     recipesEl.innerHTML = ''
 //! filterSearch isnt working!!!
@@ -98,19 +95,60 @@ const summaryDOM = () => {
 //* initialize editPage
 
 const initializeEditPage = (recipeId) => {
-    const recipes = xRecipes.exposeRecipes()
 
-    const titleEle = document.querySelector('#edit-title')
+    const titleEle = document.querySelector('#edit-title')//element creation
     const stepsEle = document.querySelector('#edit-steps')
 
-    const ingredientsEle = document.createElement('div')
-    
-    const recipeItem = recipes.find( recipe => recipe.id === recipeId)
+    const ingredientsEle = document.querySelector('#ingredients')
+    const ingredientListItem = document.createElement('p')
+
+    const recipeItem = recipes.find( recipe => recipe.id === recipeId)//finding match
     console.log(recipeItem)
 
-    titleEle.value = recipeItem.title
+    titleEle.value = recipeItem.title //assigning content
     stepsEle.value = recipeItem.steps
+
+    
+
+    const ingredients = recipeItem.ingredients //* this can be passed into the generateIngredientsDOM fxn
+    console.log(ingredients)
+    //* generateIngredientsDOM to be called here
+    ingredients.forEach( () => {
+        ingredientsEle.appendChild(generateIngredientsDOM(ingredients))
+    })
+
 }
+
+const generateIngredientsDOM = (ingredients) => {// ingredients shd be an array
+    const ingredientsEle = document.createElement('label')
+    const ingredientText = document.createElement('p')
+    const checkbox = document.createElement('input')
+    const delBtn = document.createElement('button')
+    const containerEl = document.createElement('div')
+
+    ingredientText.textContent = ingredients.item
+    ingredientsEle.appendChild(ingredientText)
+
+    checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = ingredients.avail
+    ingredientText.appendChild(checkbox)
+
+    delBtn.textContent = 'Remove'
+    delBtn.addEventListener('click', () => {
+        // xRecipes.deleteIngredient(ingredients.id) //todo write this function
+
+    })
+
+    ingredientText.appendChild(delBtn)
+
+    containerEl.appendChild(ingredientsEle)
+
+    return containerEl
+}
+
+
+
+
 
 
 export { generateRecipeDOM, renderRecipes, summaryDOM, initializeEditPage }
