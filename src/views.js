@@ -88,37 +88,6 @@ const summaryDOM = () => {
 
 
 //* generate ingredientsDOM
-
-
-//* render ingredientDOm
-
-//* initialize editPage
-
-const initializeEditPage = (recipeId) => {
-
-    const titleEle = document.querySelector('#edit-title')//element creation
-    const stepsEle = document.querySelector('#edit-steps')
-
-    const ingredientsEle = document.querySelector('#ingredients')
-    const ingredientListItem = document.createElement('p')
-
-    const recipeItem = recipes.find( recipe => recipe.id === recipeId)//finding match
-    console.log(recipeItem)
-
-    titleEle.value = recipeItem.title //assigning content
-    stepsEle.value = recipeItem.steps
-
-    
-
-    const ingredients = recipeItem.ingredients //* this can be passed into the generateIngredientsDOM fxn
-    console.log(ingredients)
-    //* generateIngredientsDOM to be called here
-    ingredients.forEach( () => {
-        ingredientsEle.appendChild(generateIngredientsDOM(ingredients))
-    })
-
-}
-
 const generateIngredientsDOM = (ingredients) => {// ingredients shd be an array
     const ingredientsEle = document.createElement('label')
     const ingredientText = document.createElement('p')
@@ -144,7 +113,35 @@ const generateIngredientsDOM = (ingredients) => {// ingredients shd be an array
     containerEl.appendChild(ingredientsEle)
 
     return containerEl
+
 }
+
+//* initialize editPage (contains generateIngredientsDom())
+
+const initializeEditPage = (recipeId) => {
+
+    const titleEle = document.querySelector('#edit-title')//element creation
+    const stepsEle = document.querySelector('#edit-steps')
+
+    const ingredientsEle = document.querySelector('#ingredients')
+
+    const recipeItem = recipes.find( recipe => recipe.id === recipeId)//finding match
+    console.log(recipeItem)
+
+    titleEle.value = recipeItem.title //assigning content
+    stepsEle.value = recipeItem.steps
+
+    
+
+    const ingredients = recipeItem.ingredients //* this can be passed into the generateIngredientsDOM fxn
+
+    ingredients.forEach( (ingredient) => {
+        ingredientsEle.appendChild(generateIngredientsDOM(ingredient))
+    })
+
+}
+
+
 
 
 
