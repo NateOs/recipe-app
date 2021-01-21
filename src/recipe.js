@@ -19,28 +19,34 @@ class Recipe_ {
             'steps':this.steps,
             'ingredients': this.ingredients
             }
-        
-            // todo Test this again!
+      
             if (typeof recipeItem.title === 'string') {
-                
                 this.loadRecipe() //get from storage
                 this.savedItem.push(recipeItem) //
                 this.saveRecipe()
             }
-            return recipeItem.id
+            return recipeItem
     }
-    //*updates the recipe without creation of new uuid
-    updateRecipe(id) {
-        // TODO Finish function
-        const savedRecipes = this.loadRecipe()
+    
+    updateRecipe(RecipeId, newItem) {
+        const matchedExistItem = this.savedItem.find( item => item.id === RecipeId)
+        const matchedExistItemIndex = this.savedItem.findIndex( item => item.id === RecipeId)
+        
+        if (matchedExistItem.id === newItem.id) { //see if contents are the same
+            this.savedItem.splice(matchedExistItemIndex, 1, newItem)
+            this.saveRecipe()
+        } else {
+            this.savedItem.push(newItem)
+            this.saveRecipe()
+        }
 
-        const recipes = savedRecipes.find( recipe => recipe.id === id)
-        console.log(recipes)
+        console.log(matchedExistItem)
+        console.log(matchedExistItemIndex)
+        console.log(this.savedItem)
     }
     
     //*saveRecipe to localstorage
-    saveRecipe() {
-        
+    saveRecipe() { 
         localStorage.setItem('recipes', JSON.stringify(this.savedItem))
         return `Item saved`
     }
@@ -72,6 +78,10 @@ class Recipe_ {
     exposeRecipes () {
         return this.savedItem
     }
+
+    // todo ////////////////////////////////////////////////////////////////////////
+    // todo /////////////////////////////////////////////////////////////////////////
+
      //*Allows to add new ingredient through button
      addIngredient(id, ingredient) {
         const recipes = this.savedItem
