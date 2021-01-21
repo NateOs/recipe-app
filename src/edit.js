@@ -63,15 +63,11 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
 //TODO Redirect to Homepage after note is deleted
 //* delete recipe
 document.querySelector('#deleteBtn').addEventListener('click', () => {
-    const id = location.hash.substring(1)
+    // const id = location.hash.substring(1)
     const theRecipe = new Recipe_()
-    theRecipe.deleteRecipe(id)
+    theRecipe.deleteRecipe(recipeId)
     // location.assign('/index.html')
     window.open('/index.html')
 })
 
 initializeEditPage(recipeId)
-
-
-
-
