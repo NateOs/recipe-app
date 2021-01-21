@@ -34,19 +34,10 @@ class Recipe_ {
         // TODO Finish function
         const savedRecipes = this.loadRecipe()
 
-        const recipeIndex = savedRecipes.find( recipe => recipe.id === id)
-        console.log(recipeIndex)
+        const recipes = savedRecipes.find( recipe => recipe.id === id)
+        console.log(recipes)
     }
-     //*Allows to add new ingredient through button
-    addIngredient(id, ingredient) {
-        const recipes = this.savedItem
-
-        const recipe = recipes.find((recipe) => recipe.id === id)
     
-        recipe.ingredients.push(ingredient)
-        this.saveRecipe()
-   
-    }
     //*saveRecipe to localstorage
     saveRecipe() {
         
@@ -76,10 +67,61 @@ class Recipe_ {
         window.location.assign('index.html')
         }
     }
+   
     //*make recipe object available
     exposeRecipes () {
         return this.savedItem
     }
+     //*Allows to add new ingredient through button
+     addIngredient(id, ingredient) {
+        const recipes = this.savedItem
+
+        const recipe = recipes.find((recipe) => recipe.id === id)
+    
+        recipe.ingredients.push(ingredient)
+        this.saveRecipe()
+   
+    }
+     //* delete ingredient
+     deleteIngredient(ingredientId) {
+        const ingredients = exposeIngredients()
+        const delIngredient = ingredients.find( ingredient => ingredients.id === ingredientId)
+        //update ingreedient fxn here
+    }
+
+     // //todo find ingredientsByID
+    // //* expose ingredients on recipeItem
+    // //* expose ingredients with recipeid, pick off ingredients to edit 
+    exposeIngredients (recipeId) {
+        const recipes = this.savedItem
+        const recipe = recipes.find( recipe => recipe.id === recipeId )
+        const ingredients = recipe.ingredients
+        return ingredients
+    }
+
+    //*toggle ingredient availability
+
+    //find item that matches id
+    //return item
+    //get .ingredients of item
+    // todo use recipe.ingredients.id to toggle available ingredients
+    // find ingredient
+
+    //todo rewrite this!
+    //set avail to true when checkbox change is true
+    // toggleIngredient (ingredientId) {
+    //     const ingredient = items.find( items => ingredient.id === ingredientId)
+    //     if (typeof ingredient !== undefined) {
+    //         const matchedIngredient = ingredient.find( ingredient => recipe.id === id)
+    //         const ingredients = matchedRecipe.ingredients
+    //         ingredients.find
+
+    //         console.log(ingredients)
+    //     }
+    //     console.log(typeof recipes)
+        
+    // }
+
 }
 
 export { Recipe_ as default }
