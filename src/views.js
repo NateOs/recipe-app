@@ -87,35 +87,6 @@ const summaryDOM = () => {
 }
 
 
-//* generate ingredientsDOM
-const generateIngredientsDOM = (ingredients) => {// ingredients shd be an array
-    const ingredientsEle = document.createElement('label')
-    const ingredientText = document.createElement('p')
-    const checkbox = document.createElement('input')
-    const delBtn = document.createElement('button')
-    const containerEl = document.createElement('div')
-
-    ingredientText.textContent = ingredients.item
-    ingredientsEle.appendChild(ingredientText)
-
-    checkbox.setAttribute('type', 'checkbox')
-    checkbox.checked = ingredients.avail
-    ingredientText.appendChild(checkbox)
-
-    delBtn.textContent = 'Remove'
-    delBtn.addEventListener('click', () => {
-        // xRecipes.deleteIngredient(ingredients.id) //todo write this function
-
-    })
-
-    ingredientText.appendChild(delBtn)
-
-    containerEl.appendChild(ingredientsEle)
-
-    return containerEl
-
-}
-
 //* initialize editPage (contains generateIngredientsDom())
 
 const initializeEditPage = (recipeId) => {
@@ -140,6 +111,37 @@ const initializeEditPage = (recipeId) => {
     })
 
 }
+
+//* generate ingredientsDOM
+const generateIngredientsDOM = (ingredients) => {// takes in 1 ingredient to render
+    const ingredientsEle = document.createElement('label')
+    const ingredientText = document.createElement('p')
+    const checkbox = document.createElement('input')
+    const delBtn = document.createElement('button')
+    const containerEl = document.createElement('div')
+
+    ingredientText.textContent = ingredients.item
+    ingredientsEle.appendChild(ingredientText)
+
+    checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = ingredients.avail
+    ingredientText.appendChild(checkbox)
+
+    delBtn.textContent = 'x'
+    delBtn.addEventListener('click', () => {
+        // xRecipes.deleteIngredient(ingredients.id) //todo write this function
+
+    })
+
+    ingredientText.appendChild(delBtn)
+
+    containerEl.appendChild(ingredientsEle)
+    console.log(containerEl)
+
+    return containerEl
+
+}
+
 
 
 
