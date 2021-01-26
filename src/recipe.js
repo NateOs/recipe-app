@@ -28,21 +28,27 @@ class Recipe_ {
             return recipeItem
     }
     
-    updateRecipe(RecipeId, newItem) {
+    updateRecipe(RecipeId, updateObject) {
         const matchedExistItem = this.savedItem.find( item => item.id === RecipeId)
         const matchedExistItemIndex = this.savedItem.findIndex( item => item.id === RecipeId)
         
-        if (matchedExistItem.id === newItem.id) { //see if contents are the same
-            this.savedItem.splice(matchedExistItemIndex, 1, newItem)
+        if (updateObject.title === '') { //reload items nulled by dataObject
+            updateObject.title = matchedExistItem.title
+        }
+        if (updateObject.steps === '') {//reload items nulled by dataObject
+            updateObject.steps = matchedExistItem.steps
+        }
+
+        if (matchedExistItem.id === updateObject.id) { //see if contents are the same
+            this.savedItem.splice(matchedExistItemIndex, 1, updateObject)
             this.saveRecipe()
         } else {
-            this.savedItem.push(newItem)
+            this.savedItem.push(updateObject)
             this.saveRecipe()
         }
 
-        console.log(matchedExistItem)
-        console.log(matchedExistItemIndex)
-        console.log(this.savedItem)
+        console.log(updateObject)
+
     }
     
     //*saveRecipe to localstorage
