@@ -1,17 +1,14 @@
 'use strict'
 
-import Recipe_ from "./recipe"
 import { getFilters } from "./filters"
+import Recipe_ from "./recipe"
 
 const filters = getFilters()
 const xRecipes = new Recipe_()
-
+const recipeId = location.hash.substring('1')
 const recipes = xRecipes.exposeRecipes() //accessing all recipe values
 
-// const testItems = xRecipes.toggleIngredient('0d755e92-8a8e-4b2f-a13f-97277e73234b')
-
 //* GenerateRecipeDom
-//todo add a attributes
 const generateRecipeDOM = (recipe) => {
 
     const recipeEle = document.createElement('a')
@@ -51,10 +48,10 @@ const generateRecipeDOM = (recipe) => {
 const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
     const recipes = xRecipes.exposeRecipes()
-    const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
+    const filteredRecipes = recipes.filter(
+        (recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
     recipesEl.innerHTML = ''
-//! filterSearch isnt working!!!
 
     if (filteredRecipes.length > 0) {
         filteredRecipes.forEach( recipe => {
@@ -97,23 +94,19 @@ const initializeEditPage = (recipeId) => {
     const ingredientsEle = document.querySelector('#ingredients')
 
     const recipeItem = recipes.find( recipe => recipe.id === recipeId)//finding match
-    console.log(recipeItem)
 
     titleEle.value = recipeItem.title //assigning content
     stepsEle.value = recipeItem.steps
 
-    
-
-    const ingredients = recipeItem.ingredients //* this can be passed into the generateIngredientsDOM fxn
+    const ingredients = recipeItem.ingredients //*passed into the generateIngredientsDOM fxn
 
     ingredients.forEach( (ingredient) => {
         ingredientsEle.appendChild(generateIngredientsDOM(ingredient))
     })
-
 }
 
 //* generate ingredientsDOM
-const generateIngredientsDOM = (ingredients) => {// takes in 1 ingredient to render
+const generateIngredientsDOM = (ingredients) => {//* takes in 1 ingredient to render
     const ingredientsEle = document.createElement('label')
     const ingredientText = document.createElement('p')
     const checkbox = document.createElement('input')
@@ -127,27 +120,24 @@ const generateIngredientsDOM = (ingredients) => {// takes in 1 ingredient to ren
     checkbox.checked = ingredients.avail
     ingredientText.appendChild(checkbox)
 
+    //*ingredientButtons
     delBtn.textContent = 'x'
-    delBtn.addEventListener('click', () => {
-        // xRecipes.deleteIngredient(ingredients.id) //todo write this function
+    delBtn.classList.add('ingredientBtn')
+    delBtn.dataset.id = ingredients.id
 
+    delBtn.addEventListener('click', (e) => {
+        // console.log(e.currentTarget.dataset.id)
+        const ingredientId = e.currentTarget.dataset.id
+
+        xRecipes.deleteIngredient(ingredientId, recipeId)
     })
 
     ingredientText.appendChild(delBtn)
-
     containerEl.appendChild(ingredientsEle)
-    console.log(containerEl)
 
     return containerEl
 
 }
-
-
-
-
-
-
-
 
 
 export { generateRecipeDOM, renderRecipes, summaryDOM, initializeEditPage }

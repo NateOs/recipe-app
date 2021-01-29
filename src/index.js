@@ -8,9 +8,12 @@ import { setFilters } from "./filters"
 const theRecipe = new Recipe_()
 
 document.querySelector('#searchItem').addEventListener('input', (e) => {
-    setFilters({
+    const updates = {
         searchText : e.target.value
-    })
+    }
+    
+    setFilters(updates)
+    console.log(updates.searchText)
 })
 
 document.querySelector('#add-newBtn').addEventListener('click', (e) => {
@@ -20,7 +23,3 @@ document.querySelector('#add-newBtn').addEventListener('click', (e) => {
 
 renderRecipes()
 summaryDOM()
-
-
-    // TODO get items id 
-    // TODO use id to update item

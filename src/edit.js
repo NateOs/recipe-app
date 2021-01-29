@@ -15,22 +15,24 @@ let dataObject  = {
 }
 
 document.querySelector('#edit-title').addEventListener('input',  (e) => {
-
-    dataObject.title = e.target.value
+        dataObject.title = e.target.value
+    
 })
 
 document.querySelector('#edit-steps').addEventListener('input',  (e) => {
     
-    dataObject.steps = e.target.value
+        dataObject.steps = e.target.value
 })
 
-document.querySelector('#edit-ingredient').addEventListener('change', (e) => {
+document.querySelector('#edit-ingredient').addEventListener('input', (e) => {
 
-    dataObject.ingredients.push({
-        'id' : uuidv4(),
-        'item' : e.target.value,
-        'avail' : false
-    })
+    if (e.target.value != '') {
+        dataObject.ingredients.push({
+            'id' : uuidv4(),
+            'item' : e.target.value,
+            'avail' : false
+        })    
+    }
 })
 
  //* adding to ingredient list
@@ -48,11 +50,8 @@ document.querySelector('#add-ingredientBtn').addEventListener('click', (e) => {
     // }
 })
 
-//* submitting a recipe
+//* submitting a recipe (or updating an existing recipe)
 
-//todo update function works but ingredients don't save
-//todo update fucntion seems to update item only one time correctly
-//todo and empty the item after the update
 document.querySelector('#submitBtn').addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -60,7 +59,6 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
     const {id, title, steps, ingredients} = dataObject
 
     if (matchedExistItem === undefined) {//item not found
-
 
         if (title && steps !== '') {
             theRecipe = new Recipe_(id, title, steps, ingredients)
@@ -75,7 +73,7 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
                 'steps': steps,
                  'ingredients':ingredients
                 }
-
+    console.log(updateObj)
             theRecipe.updateRecipe(recipeId, updateObj)
         } 
 })
@@ -85,7 +83,6 @@ document.querySelector('#submitBtn').addEventListener('click', (e) => {
 //* delete recipe
 document.querySelector('#deleteBtn').addEventListener('click', () => {
     window.open('/index.html') //redirects
-
     theRecipe.deleteRecipe(recipeId)
 })
 

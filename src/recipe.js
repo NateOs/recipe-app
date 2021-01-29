@@ -35,6 +35,7 @@ class Recipe_ {
         if (updateObject.title === '') { //reload items nulled by dataObject
             updateObject.title = matchedExistItem.title
         }
+        
         if (updateObject.steps === '') {//reload items nulled by dataObject
             updateObject.steps = matchedExistItem.steps
         }
@@ -85,6 +86,12 @@ class Recipe_ {
         return this.savedItem
     }
 
+    //*
+    exposeRecipeById (recipeId) {
+        const recipes = this.savedItem
+        console.log(recipes)
+    }
+
     // todo ////////////////////////////////////////////////////////////////////////
     // todo /////////////////////////////////////////////////////////////////////////
 
@@ -98,11 +105,19 @@ class Recipe_ {
         this.saveRecipe()
    
     }
+    //todo test this function
      //* delete ingredient
-     deleteIngredient(ingredientId) {
-        const ingredients = exposeIngredients()
-        const delIngredient = ingredients.find( ingredient => ingredients.id === ingredientId)
-        //update ingreedient fxn here
+     deleteIngredient(ingredientId, recipeId) {
+        const recipe = this.savedItem.find( recipeItem => recipeItem.id === recipeId)
+        const ingredients = recipe.ingredients
+        const ingredientIndex = ingredients.findIndex(ingredient => ingredient.id === ingredientId)
+        
+        if (ingredientIndex > -1) {
+            recipe.ingredients.splice(ingredientIndex, 1)
+            this.savedItem = recipe
+            this.saveRecipe()
+        }
+        console.log(recipe)
     }
 
      // //todo find ingredientsByID
@@ -111,6 +126,7 @@ class Recipe_ {
     exposeIngredients (recipeId) {
         const recipes = this.savedItem
         const recipe = recipes.find( recipe => recipe.id === recipeId )
+        console.log(recipe)
         const ingredients = recipe.ingredients
         return ingredients
     }
