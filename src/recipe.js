@@ -114,8 +114,9 @@ class Recipe_ {
         
         if (ingredientIndex > -1) {
             recipe.ingredients.splice(ingredientIndex, 1)
-            this.savedItem = recipe
+            this.savedItem.push(recipe)
             this.saveRecipe()
+            this.deleteRecipe(recipeId)
         }
         console.log(recipe)
     }
