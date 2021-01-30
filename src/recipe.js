@@ -116,7 +116,7 @@ class Recipe_ {
             recipe.ingredients.splice(ingredientIndex, 1)
             this.savedItem.push(recipe)
             this.saveRecipe()
-            this.deleteRecipe(recipeId)
+            this.deleteRecipe(recipeId) // saving does not mutate orginal recipe item, so deleteIt
         }
         console.log(recipe)
     }
@@ -134,26 +134,29 @@ class Recipe_ {
 
     //*toggle ingredient availability
 
-    //find item that matches id
-    //return item
-    //get .ingredients of item
+    // find item that matches id
+    // return item
+    // get .ingredients of item
     // todo use recipe.ingredients.id to toggle available ingredients
     // find ingredient
 
-    //todo rewrite this!
-    //set avail to true when checkbox change is true
-    // toggleIngredient (ingredientId) {
-    //     const ingredient = items.find( items => ingredient.id === ingredientId)
-    //     if (typeof ingredient !== undefined) {
-    //         const matchedIngredient = ingredient.find( ingredient => recipe.id === id)
-    //         const ingredients = matchedRecipe.ingredients
-    //         ingredients.find
+    // todo rewrite this!
+    // set avail to true when checkbox change is true
+    toggleIngredient (recipeId, ingredientId) {
+        const recipe = this.savedItem.find( recipeItem => recipeItem.id === recipeId)
+        const ingredients = recipe.ingredients
+        const ingredient = ingredients.find( item => item.id === ingredientId)
 
-    //         console.log(ingredients)
-    //     }
-    //     console.log(typeof recipes)
-        
-    // }
+        // if (typeof ingredient !== undefined) {
+        //     if (ingredient.avail === true) {
+        //         ingredient.avail = false
+        //     } else {
+        //         ingredient.avail = true
+        //     }
+        //     console.log(ingredient)
+        // }    
+        console.log('1')    
+    }
 
 }
 
